@@ -1,0 +1,97 @@
+<div class="card text-center">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">USERS RATINGS</h6>
+        <div [ngSwitch]="color">
+            <div *ngSwitchCase="'light'">
+                <h1><span class="badge badge-light">{{usersrating | number : '1.2-2'}}</span></h1>
+            </div>
+            <div *ngSwitchCase="'success'">
+                <h1><span class="badge badge-success">{{usersrating | number : '1.2-2'}}</span></h1>
+            </div>
+            <div *ngSwitchCase="'warning'">
+                <h1><span class="badge badge-warning">{{usersrating | number : '1.2-2'}}</span></h1>
+            </div>
+            <div *ngSwitchCase="'danger'">
+                <h1><span class="badge badge-danger">{{usersrating | number : '1.2-2'}}</span></h1>
+            </div>
+        </div>
+        <!-- <h1><span class="badge badge-light">{{usersrating}}</span></h1> -->
+        <hr>
+        <h6 class="card-title">YOUR RATING</h6>
+        <div class="" *ngIf="value">
+            <h3><span class="badge badge-light">{{value[0].value}} <i *ngIf="value" style="color: #ffd700;" class="fa fa-star"></i></span></h3>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add Review
+  </button>
+
+        <!-- VENTANA MODAL-->
+        <div #exampleModal class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{this.idalbum[0]}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5">
+
+                                <img [src]="portada| noimage" alt="..." class="img-thumbnail">
+                            </div>
+                            <div class="col-md-7">
+                                <br> <br>
+                                <div class="" *ngIf="value">
+                                    <h4><span class="badge badge-light">{{value[0].value}} <i *ngIf="value" style="color: #ffd700;" class="fa fa-star"></i></span></h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                                            <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
+                                                <i style="cursor:pointer" class="fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-12 ">
+                                    <div class="widget-area no-padding blank">
+                                        <div class="status-upload">
+                                            <form>
+                                                <textarea class="form-control" name="textValue" [(ngModel)]="textValue" placeholder="{{textValue}}" rows="3"></textarea>
+                                                <br>
+
+                                                <div class="clearfix"></div>
+                                            </form>
+                                        </div>
+                                        <!-- Status Upload  -->
+                                    </div>
+                                    <!-- Widget Area -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeAddExpenseModal>Close</button>
+                        <button type="button" (click)="SaveComent()" class="btn btn-primary pull-right"><i class="far fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>

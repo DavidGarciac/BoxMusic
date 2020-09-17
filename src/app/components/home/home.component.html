@@ -1,0 +1,79 @@
+<br>
+<div *ngIf="currentusu ">
+    <h1 class="text-center" *ngIf="currentusu[0].nombre != 'undefined' ">
+        Welcome back... <a [routerLink]="['/profile']">  {{currentusu[0].nombre}} </a>
+    </h1>
+</div>
+
+<hr>
+<div class="container">
+
+    <!-- BANNER NEWS ALBUMS -->
+    <div class="row puntero ">
+        <!-- PRIMERA COLUMNA -->
+        <div class="col-sm-6 ">
+            <div class="row justify-content-end ">
+                <div class=" div-pic-1 " (click)="verAlbum(nuevasCanciones[0])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[0]?.images | noimage" class="img-fluid ">
+                        <div class="overlay">
+                            <h6> {{nuevasCanciones[0]?.name}}
+                                <h2>{{nuevasCanciones[0]?.artists[0].name}} </h2>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="div-pic-2 " (click)="verAlbum(nuevasCanciones[1])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[1]?.images | noimage " class="img-fluid ">
+                        <div class="overlay">
+                            <h6> {{nuevasCanciones[1]?.name}}
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-pic-2  " (click)="verAlbum(nuevasCanciones[2])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[2]?.images | noimage " class="img-fluid ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SEGUNDA COLUMNA COLUMNA -->
+        <div class="col-sm-6 ">
+            <div class="row ">
+                <div class="div-pic-2 " (click)="verAlbum(nuevasCanciones[3])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[3]?.images | noimage " class="img-fluid ">
+
+                    </div>
+
+                </div>
+                <div class="div-pic-2  " (click)="verAlbum(nuevasCanciones[4])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[4]?.images | noimage " class="img-fluid ">
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row ">
+                <div class="div-pic-1 " (click)="verAlbum(nuevasCanciones[5])">
+                    <div class="hovereffect">
+                        <img [src]="nuevasCanciones[5]?.images | noimage " class="img-fluid ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h1>NEW REALEASES</h1>
+    <hr>
+    <app-cards class="puntero" [itemslenght]="nuevasCanciones.length " [items]="nuevasCanciones "> </app-cards>
+</div>
+
+<br>

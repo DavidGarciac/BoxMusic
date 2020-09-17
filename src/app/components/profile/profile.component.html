@@ -1,0 +1,125 @@
+<br>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#info" data-toggle="tab" class="nav-link active">Info</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#recent" data-toggle="tab" class="nav-link">Recent Activity</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="info">
+                    <h5 class="mb-3"></h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Email</h6>
+                            <div *ngIf="currentusu">
+                                <p *ngIf="currentusu[0].email != 'undefined'">
+                                    {{currentusu[0].email}}
+                                </p>
+                            </div>
+
+                            <h6>Name</h6>
+                            <div *ngIf="recentactivity[0]">
+                                <p *ngIf="recentactivity[0].albumId != 'undefined' ">
+                                    {{currentusu[0].nombre}}
+                                </p>
+                            </div>
+
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <h6>Recent badges</h6>
+                            <a href="#" class="badge badge-dark badge-pill">html5</a>
+                            <a href="#" class="badge badge-dark badge-pill">react</a>
+                            <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                            <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+                            <a href="#" class="badge badge-dark badge-pill">css3</a>
+                            <a href="#" class="badge badge-dark badge-pill">jquery</a>
+                            <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+                            <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                            <hr>
+                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                        </div> -->
+
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="recent">
+                    <div class="col-md-12">
+                        <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>
+                            <div *ngIf="currentusu">
+                                <div *ngIf="currentusu[0].nombre != 'undefined' ">{{currentusu[0].nombre}} Recent Activity</div>
+                            </div>
+                        </h5>
+                        <table class="table table-sm table-hover table-striped">
+                            <tbody *ngFor="let i of bucle">
+                                <tr>
+                                    <td>
+                                        <div *ngIf="recentactivity[i]"><strong *ngIf="recentactivity[i].userId != 'undefined' ">{{recentactivity[i].userId}} </strong> reted with <strong *ngIf="recentactivity[i].value != 'undefined' ">{{recentactivity[i].value}} </strong> to
+                                            <strong *ngIf="recentactivity[i].albumId != 'undefined' ">{{recentactivity[i].albumId}} </strong>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="edit">
+
+                    <form (ngSubmit)="edit(f)" #f="ngForm">
+                        <div> <span *ngIf=" f.submitted && f.controls['email'].errors" class="text-danger animated fadeIn">Email is required</span></div>
+
+                        <div class="form-group ">
+                            <input name="email" [(ngModel)]="user.email" class="form-control " required placeholder="Email" type="email ">
+                        </div>
+                        <span *ngIf=" f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn">Username is required</span>
+                        <div class="form-group ">
+                            <input name="nombre" [(ngModel)]="user.nombre" required class="form-control " placeholder="Username" type="text">
+                        </div>
+
+                        <!-- form-group// -->
+
+                        <span *ngIf=" f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn" class="text-danger">min 6 characters is required</span>
+                        <div class="form-group ">
+                            <input class="form-control " type="password" name="password" required [(ngModel)]="user.password" minlength="6" placeholder="******">
+                        </div>
+                        <!-- form-group// -->
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <button type="submit " class="btn btn-primary btn-block "> Save  </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- .row// -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1 text-center ">
+
+            <div appNgDropFiles [archivos]="archivos" [imagen]="imagen" (mouseSobre)="estasobreDrop = $event" [ngClass]="{'file-over': estasobreDrop}" class="drop-zone">
+                <div *ngIf="urlimg"> <img [src]=" urlimg " class="mx-auto img-fluid img-circle d-block" alt="avatar"></div>
+                <h6 class="mt-2">Insert a different photo</h6>
+                <div *ngIf="archivos[0]">
+                    <p *ngIf="archivos[0].nombreArchivo != 'undefined'">{{archivos[0].nombreArchivo}}</p>
+                </div>
+
+            </div>
+            <br>
+            <div class="btn blue-gradient btn-sm center">
+                <button class="btn btn-secondary" (click)="uploadImg(imagen)"> <i class="fas fa-upload"></i> upload</button>
+            </div>
+        </div>
+    </div>
+</div>

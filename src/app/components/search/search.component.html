@@ -1,0 +1,32 @@
+<br>
+<!-- <div class="btn-group btn-group-toggle" (click)="ocultar()" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" [routerLink]="['all']">All</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['albums']">Albums</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['artists']">Artists</button>
+</div> -->
+
+<div class="btn-group btn-group-toggle" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary active" [routerLink]="['/search', termino]">All</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/searchalbums', termino]">Albums</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/searchartists', termino]">Artists</button>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<h4 style=" "> Results for "{{termino}}"...</h4>
+<br>
+<app-loading *ngIf="loading=== true"></app-loading>
+<div>
+    <div class="container">
+        <h3>Albums</h3>
+        <hr>
+        <app-cards class="puntero" [itemslenght]="albums.length" [items]="albums"> </app-cards>
+    </div>
+
+    <div class="container">
+        <h3>Artists</h3>
+        <hr>
+        <app-cards class="puntero" [itemslenght]="artistas.length" [items]="artistas"> </app-cards>
+    </div>
+</div>

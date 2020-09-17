@@ -1,0 +1,21 @@
+<br>
+
+
+<div class="btn-group btn-group-toggle" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary " [routerLink]="['/search', termino]">All</button>
+    <button type="button" class="btn btn-secondary " [routerLink]="['/searchalbums', termino]">Albums</button>
+    <button type="button" class="btn btn-secondary active" [routerLink]="['/searchartists', termino]">Artists</button>
+</div>
+
+
+<h4 style=" "> Results for "{{termino}}"...</h4>
+<br>
+<app-loading *ngIf="loading=== true"></app-loading>
+<router-outlet></router-outlet>
+<div>
+    <div class="container">
+        <h3>Artists</h3>
+        <hr>
+        <app-cards class="puntero" [itemslenght]="artistas.length" [items]="artistas"> </app-cards>
+    </div>
+</div>

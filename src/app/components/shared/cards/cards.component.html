@@ -1,0 +1,197 @@
+<!-- Pagination -->
+<pagination-controls (pageChange)="p = $event">
+
+</pagination-controls>
+<ul class="list-inline">
+    <li class="list-inline-item" *ngFor="let numcard of collections  | paginate: { itemsPerPage: 1, currentPage: p }">
+
+        <div class="row">
+            <div class="col-2" *ngIf="items[numcard]">
+                <div (click)="verCard( items[numcard] )" class="card r pointer">
+                    <img [src]="items[numcard].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard].name}} </h5>
+                        <h6 class="card-title">{{items[numcard].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" *ngIf="items[numcard+1]">
+
+                <div (click)="verCard( items[numcard+1] )" class="card r pointer">
+                    <img [src]="items[numcard+1].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+1].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+1].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+1].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2" *ngIf="items[numcard+2]">
+
+                <div (click)="verCard( items[numcard+2] )" class="card r pointer">
+                    <img [src]="items[numcard+2].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+2].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+2].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+2].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-2" *ngIf="items[numcard+3]">
+                <div (click)="verCard( items[numcard+3] )" class="card r pointer">
+                    <img [src]="items[numcard+3].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+3].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+3].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+3].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" *ngIf="items[numcard+4]">
+                <div (click)="verCard( items[numcard+4] )" class="card r pointer">
+                    <img [src]="items[numcard+4].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+4].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+4].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+4].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" *ngIf="items[numcard+5]">
+                <div (click)="verCard( items[numcard+5] )" class="card r pointer">
+                    <img [src]="items[numcard+5].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+5].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+5].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+5].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2" *ngIf="items[numcard+6]">
+                <div (click)="verCard( items[numcard+6] )" class="card r pointer">
+                    <img [src]="items[numcard+6].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+6].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+6].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+6].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2" *ngIf="items[numcard+7]">
+                <div (click)="verCard( items[numcard+7] )" class="card r pointer">
+                    <img [src]="items[numcard+7].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+7].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+7].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+7].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2" *ngIf="items[numcard+8]">
+                <div (click)="verCard( items[numcard+8] )" class="card r pointer">
+                    <img [src]="items[numcard+8].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+8].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+8].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+8].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2" *ngIf="items[numcard+9]">
+                <div (click)="verCard( items[numcard+9] )" class="card r pointer">
+                    <img [src]="items[numcard+9].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+9].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+9].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+9].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" *ngIf="items[numcard+10]">
+                <div (click)="verCard( items[numcard+10] )" class="card r pointer">
+                    <img [src]="items[numcard+10].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+10].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+10].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+10].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" *ngIf="items[numcard+11]">
+                <div (click)="verCard( items[numcard+11] )" class="card r pointer">
+
+                    <img [src]="items[numcard+11].images| noimage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{items[numcard+11].name}} </h5>
+                        <h6 class="card-title">{{items[numcard+11].release_date | slice:0:4}}</h6>
+                        <p class="card-text">
+                            <button *ngFor="let artista of items[numcard+11].artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                               <h6>  {{artista.name}} </h6>
+                        </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Pagination -->
+        <!-- <br>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls> -->

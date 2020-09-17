@@ -1,0 +1,105 @@
+<br>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Entries Column -->
+        <div class="col-md-4">
+            <!-- Album Post -->
+            <div *ngIf="album" class="card mb-3">
+                <img [src]="album[0].images | noimage" class="img-thumbnail  ">
+                <div class="card-body">
+                    <div *ngIf="album[0]">
+                        <h3 class="card-title" *ngIf="album[0].name != 'undefined' ">{{album[0].name}}
+                            <small class=" font-italic"> 
+                                <a>by   </a>
+                                 <a [routerLink]="['/artist', album[0].artists[0].id]"  >  {{album[0].artists[0].name}}</a> 
+                                </small>
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a>{{album[0].release_date}}</a> <a class="text-black-50"> - Release Date  </a>
+                                </li>
+                                <li>
+                                    <a>{{album[0].label}}</a><a class="text-black-50"> - Label</a>
+                                </li>
+                                <li>
+                                    <a>{{album[0].album_type}}</a> <a class="text-black-50"> - Format</a>
+                                </li>
+                                <li>
+                                    <a>{{dur.min}}:{{dur.sec}}</a><a class="text-black-50"> - Length</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="row col-2">
+                        <a [href]="album[0].external_urls.spotify">
+                            <button type="button" class="btn btn-success"><i class="fab fa-spotify"></i></button>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="album" class="card-footer text-muted">
+                    <i class="fa fa-copyright" aria-hidden="true"></i> {{album[0].copyrights[0].text}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-5">
+            <!-- STARS REVIEW -->
+            <div *ngIf="album[0]">
+                <app-star-review *ngIf="album[0].imagesl != 'undefined'" [portada]="album[0].images" [idalbum]="[album[0].name]" [iduser]="[usu[0].nombre]"></app-star-review>
+            </div>
+
+            <br>
+            <div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let com of coments | paginate: { itemsPerPage: 3, currentPage: p }; let i = index">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+                                        <!-- <p class="text-secondary text-center">{{com.date}}</p> -->
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>
+                                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{com.userId}}</strong></a>
+                                            <!-- <span class="badge badge-light float-right">{{com.value}}<i  style="color: #ffd700;" class="fa fa-star"></i></span> -->
+
+                                        </p>
+                                        <div class="clearfix"></div>
+                                        <span class="badge badge-light float-left">{{com.value}}<i  style="color: #ffd700;" class="fa fa-star"></i></span>
+                                        <p>{{com.coment}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Pagination -->
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <!-- Sidebar Widgets Column Track list -->
+        <div class="col-md-3">
+            <div class="card my-0">
+                <div *ngIf="canciones" class="card-body">
+                    <h6 class="card-header text-black">Track list</h6>
+                    <br>
+                    <!-- <hr color="black"> -->
+                    <p class="text-black" *ngFor="let track of canciones">
+                        {{track.track_number}}. {{track.name}}
+                        <!-- <iframe [src]="track.uri | domseguro :'https://open.spotify.com/embed?uri='" width=" 50 " height="50" frameborder="0 " allowtransparency="true " allow="encrypted-media "></iframe> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

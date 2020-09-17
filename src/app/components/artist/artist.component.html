@@ -1,0 +1,143 @@
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Card -->
+            <div class="card testimonial-card">
+
+                <!-- Background color -->
+                <div class="card-up indigo lighten-1"></div>
+                <!-- Name -->
+                <br>
+                <div class="card-title col-10">
+                    <h2> {{artista.name}}</h2>
+                </div>
+
+                <!-- Avatar -->
+                <div class=" row avatar  white">
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-8">
+                        <img [src]="artista.images | noimage" class="img-thumbnail rounded-circle">
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+
+                </div>
+
+                <!-- Content -->
+                <div class="card-body">
+
+                    <a [href]="artista.external_urls.spotify">
+                        <button type="button" class="btn btn-success"><i class="fab fa-spotify"></i></button>
+                    </a>
+                    <hr>
+                    <!-- Quotation -->
+                    <p><a *ngFor="let gen of artista.genres"> {{gen}} / </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- TOP TRACKS -->
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class=" col m-2"></div> -->
+                    <div class="col m-8">
+                        <h3>Top Tracks</h3>
+                        <table class="table text-black">
+                            <thead>
+                                <tr class=" ">
+
+                                    <th>Vista Previa</th>
+                                    <th>Album</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let track of topTracks.tracks | slice:0:5;let indice=index">
+                                    <td>
+                                        <iframe [src]="track.uri | domseguro :'https://open.spotify.com/embed?uri='" width=" 300 " height="80 " frameborder="0 " allowtransparency="true " allow="encrypted-media "></iframe></td>
+                                    <td>{{track.album.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <div class=" col m-2"></div> -->
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Albums -->
+
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-lg-12 order-lg-4">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#Albums" data-toggle="tab" class="nav-link active">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#Singles" data-toggle="tab" class="nav-link">Singles/EPs</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content py-4">
+                    <div class="tab-pane active r" id="Albums">
+
+                        <div class="card-columns  pointer">
+                            <div (click)="verCard( item )" *ngFor="let item of Albums.items" class="card r poniter">
+                                <img [src]="item.images| noimage" class="card-img-top poniter" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{item.name}} </h5>
+                                    <h6 class="card-title">{{item.release_date | slice:0:4}}</h6>
+                                    <p class="card-text">
+                                        <button *ngFor="let artista of item.artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                           <span class="badge badge-light" >   {{artista.name}} </span>
+                                    </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="Singles">
+                        <div class="card-columns  pointer">
+                            <div (click)="verCard( item )" *ngFor="let item of Singles.items" class="card r poniter">
+                                <img [src]="item.images| noimage" class="card-img-top poniter" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{item.name}} </h5>
+                                    <h6 class="card-title">{{item.release_date | slice:0:4}}</h6>
+                                    <p class="card-text">
+                                        <button *ngFor="let artista of item.artists " [routerLink]="['/artist', artista.id]" type="button" class="btn btn-light">
+                                           <span class="badge badge-light" >   {{artista.name}} </span>
+                                    </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <app-cards [items]="Singles.items"></app-cards> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- <app-loading *ngIf="loading"></app-loading> -->

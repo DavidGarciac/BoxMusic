@@ -1,0 +1,63 @@
+<div class="container">
+    <br>
+
+    <hr>
+
+    <!-- PARA INICIAR CON GOOGLE -->
+
+
+    <div class="row animated fadeIn">
+        <aside class="col-sm-4">
+
+        </aside>
+        <!-- col.// -->
+        <aside class="col-sm-4">
+            <div class="card">
+                <article class="card-body">
+                    <!-- <a href="" class="float-right btn btn-outline-primary">Sign up</a> -->
+                    <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                    <!-- <p #login>
+                     
+
+
+                        <a class="btn btn-block btn-outline-info" (click)="loginGoogle()">Login with google</a>
+
+                    </p> -->
+                    <hr>
+                    <form (ngSubmit)="loginn(f)" #f="ngForm">
+                        <span *ngIf=" f.submitted && f.controls['email'].errors" class="text-danger animated fadeIn">Email is required</span>
+                        <div class="form-group ">
+                            <input name="email" [(ngModel)]="user.email" class="form-control " required placeholder="Email" type="email ">
+                        </div>
+
+                        <span *ngIf=" f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn" class="text-danger">min 6 characters is required</span>
+                        <div class="form-group ">
+                            <input class="form-control" [(ngModel)]="user.password" name="password" required type="password" minlength="6" placeholder="****** ">
+
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <button type="submit " class="btn btn-primary btn-block "> Login  </button>
+                                </div>
+
+                            </div>
+                            <div>
+                                <a routerLink="/register" class="txt1">
+                                    Create Count
+                                </a>
+                            </div>
+                        </div>
+                        <!-- .row// -->
+                    </form>
+                </article>
+            </div>
+            <!-- card.// -->
+
+        </aside>
+        <!-- col.// -->
+        <aside class="col-sm-4 ">
+        </aside>
+    </div>
+</div>

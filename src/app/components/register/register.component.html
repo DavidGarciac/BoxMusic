@@ -1,0 +1,59 @@
+<div class="limted animated fadIn">
+    <div class="container ">
+        <br>
+
+        <hr>
+
+        <div class="row ">
+            <aside class="col-sm-4">
+
+            </aside>
+            <!-- col.// -->
+            <aside class="col-sm-4">
+                <div class="card">
+                    <article class="card-body">
+
+                        <h4 class="card-title mb-4 mt-1">Sign up</h4>
+                        <hr>
+                        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                            <span *ngIf=" f.submitted && f.controls['email'].errors" class="text-danger animated fadeIn">Email is required</span>
+                            <div class="form-group ">
+                                <input name="email" [(ngModel)]="user.email" class="form-control " required placeholder="Email" type="email ">
+                            </div>
+                            <span *ngIf=" f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn">Username is required</span>
+                            <div class="form-group ">
+                                <input name="nombre" [(ngModel)]="user.nombre" required class="form-control " placeholder="Username" type="text">
+                            </div>
+
+                            <!-- form-group// -->
+
+                            <span *ngIf=" f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn" class="text-danger">min 6 characters is required</span>
+                            <div class="form-group ">
+                                <input class="form-control " type="password" name="password" required [(ngModel)]="user.password" minlength="6" placeholder="******">
+                            </div>
+                            <!-- form-group// -->
+                            <div class="row ">
+                                <div class="col-md-6 ">
+                                    <div class="form-group ">
+                                        <button type="submit " class="btn btn-primary btn-block "> Create User  </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a routerLink="/login" class="txt1">
+                                        LogIn
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- .row// -->
+                        </form>
+                    </article>
+                </div>
+
+
+            </aside>
+            <!-- col.// -->
+            <aside class="col-sm-4 ">
+            </aside>
+        </div>
+    </div>
+</div>
